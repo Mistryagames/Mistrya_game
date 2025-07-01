@@ -1,7 +1,9 @@
+// script.js
+
 // مرجع لقاعدة البيانات
 const db = firebase.database();
 
-// توليد رمز جلسة عشوائي (4 أحرف/أرقام)
+// دالة توليد 4 أحرف/أرقام عشوائية
 function makeSessionId() {
   return Math.random().toString(36).substr(2, 4).toUpperCase();
 }
@@ -9,31 +11,42 @@ function makeSessionId() {
 // إنشاء جلسة جديدة
 function createSession() {
   const sessionId = makeSessionId();
-  db.ref("sessions/" + sessionId).set({ createdAt: Date.now() })
+  // اكتب الجلسة في Realtime Database
+  db.ref('sessions/' + sessionId).set({ createdAt: Date.now() })
     .then(() => {
-      document.querySelector(".container").innerHTML = `
+      // عرض رمز الجلسة للاعب المضيف
+      document.querySelector('.container').innerHTML = `
         <h2>رمز الجلسة: ${sessionId}</h2>
-        <p>شاركي هذا الرمز مع لاعبين آخرين للانضمام.</p>
+        <p>شاركي هذا الرمز مع الآخرين للانضمام.</p>
       `;
     })
-    .catch(err => alert("خطأ بإنشاء الجلسة: " + err.message));
+    .catch(err => {
+      alert('خطأ أثناء إنشاء الجلسة: ' + err.message);
+    });
 }
 
-// الانضمام إلى جلسة موجودة
+// انضمام إلى جلسة موجودة
 function joinSession() {
-  const code = document.getElementById("sessionCode").value.trim().toUpperCase();
-  if (!code) return alert("أدخل رمز الجلسة");
-  db.ref("sessions/" + code).get()
+  const input = document.getElementById('sessionCode');
+  const code = input.value.trim().toUpperCase();
+  if (!code) {
+    return alert('الرجاء إدخال رمز الجلسة');
+  }
+
+  // تحقق من وجود الجلسة في الـ DB
+  db.ref('sessions/' + code).get()
     .then(snapshot => {
       if (snapshot.exists()) {
-        document.querySelector(".container").innerHTML = `
-          <h2>انضممتِ إلى الجلسة ${code}</h2>
+        // عرض شاشة الانضمام
+        document.querySelector('.container').innerHTML = `
+          <h2>انضممتِ للجلسة ${code}</h2>
           <p>انتظار اللاعبين الآخرين…</p>
         `;
-        // لاحقًا: نضيف هنا الاستماع للتغييرات في الجلسة
       } else {
-        alert("رمز الجلسة غير صحيح!");
+        alert('رمز الجلسة غير موجود أو غير صحيح');
       }
     })
-    .catch(err => alert("خطأ بالانضمام: " + err.message));
+    .catch(err => {
+      alert('خطأ أثناء الانضمام: ' + err.message);
+    });
 }
