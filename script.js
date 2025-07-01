@@ -1,20 +1,19 @@
-console.log('script.js loaded');
+// تأكد من تحميل الملف
+console.log('✅ script.js loaded');
 
 // مرجع لقاعدة البيانات
 const db = firebase.database();
 
-// دالة توليد 4 أحرف/أرقام عشوائية
+// دالة لإنشاء رمز جلسة عشوائي (4 أحرف/أرقام)
 function makeSessionId() {
   return Math.random().toString(36).substr(2, 4).toUpperCase();
 }
 
-// إنشاء جلسة جديدة
+// إنشاء جلسة جديدة وكتابة الرمز في Realtime Database
 function createSession() {
   const sessionId = makeSessionId();
-  // اكتب الجلسة في Realtime Database
   db.ref('sessions/' + sessionId).set({ createdAt: Date.now() })
     .then(() => {
-      // عرض رمز الجلسة للاعب المضيف
       document.querySelector('.container').innerHTML = `
         <h2>رمز الجلسة: ${sessionId}</h2>
         <p>شاركي هذا الرمز مع الآخرين للانضمام.</p>
@@ -25,7 +24,7 @@ function createSession() {
     });
 }
 
-// انضمام إلى جلسة موجودة
+// الانضمام إلى جلسة موجودة عبر الكود المدخل
 function joinSession() {
   const input = document.getElementById('sessionCode');
   const code = input.value.trim().toUpperCase();
@@ -33,13 +32,11 @@ function joinSession() {
     return alert('الرجاء إدخال رمز الجلسة');
   }
 
-  // تحقق من وجود الجلسة في الـ DB
   db.ref('sessions/' + code).get()
     .then(snapshot => {
       if (snapshot.exists()) {
-        // عرض شاشة الانضمام
         document.querySelector('.container').innerHTML = `
-          <h2>انضممتِ للجلسة ${code}</h2>
+          <h2>انضممتِ إلى الجلسة ${code}</h2>
           <p>انتظار اللاعبين الآخرين…</p>
         `;
       } else {
