@@ -1,40 +1,57 @@
-// احصل على مرجع لقاعدة البيانات
-const db = firebase.database();
-
-// دالة توليد كود عشوائي مكوّن من 4 أحرف/أرقام
-function makeSessionId() {
-  return Math.random().toString(36).substr(2, 4).toUpperCase();
+/* قاعدة الصفحة */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #1c1c1c;
+  color: #fff;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
-// إنشاء جلسة جديدة
-function createSession() {
-  const sessionId = makeSessionId();
-  // أنشئ node في DB باسم الجلسة
-  db.ref("sessions/" + sessionId).set({
-    createdAt: Date.now()
-  }).then(() => {
-    // عرض رمز الجلسة للمضيف
-    document.querySelector(".container").innerHTML = `
-      <h2>Session Code: ${sessionId}</h2>
-      <p>شاركي هذا الرمز مع لاعبين آخرين للانضمام.</p>
-    `;
-  });
+/* الصندوق المركزي */
+.container {
+  background: #2e2e2e;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
-// الانضمام إلى جلسة موجودة
-function joinSession() {
-  const code = document.getElementById("sessionCode").value.trim().toUpperCase();
-  // تحقّق من وجود الجلسة في DB
-  db.ref("sessions/" + code).get().then(snapshot => {
-    if (snapshot.exists()) {
-      // نجح الانضمام
-      document.querySelector(".container").innerHTML = `
-        <h2>Joined session ${code}</h2>
-        <p>انتظار اللاعبين الآخرين…</p>
-      `;
-      // هنا تبدأين تراقبين أي تغييرات في الجلسة
-    } else {
-      alert("رمز الجلسة غير صحيح!");
-    }
-  });
+/* عناصر تحكم اللوبي */
+.lobby-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* صندوق الانضمام */
+.join-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.join-box input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* أزرار متناسقة */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #d32f2f;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b71c1c;
 }
