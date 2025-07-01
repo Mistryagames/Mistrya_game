@@ -1,5 +1,4 @@
-// تأكد من تحميل الملف
-console.log('✅ script.js loaded');
+console.log('script.js loaded');
 
 // مرجع لقاعدة البيانات
 const db = firebase.database();
