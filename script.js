@@ -1,5 +1,5 @@
 function startGame() {
-  document.querySelector(".container").innerHTML = `
+document.querySelector(".container").innerHTML = `
     <h2>Villa Baldini - The Beginning</h2>
     <p><em>Tuscany, Italy – Autumn 2023</em></p>
     <p>In the heart of the Italian countryside, Villa Baldini stands tall among the crimson vines.</p>
