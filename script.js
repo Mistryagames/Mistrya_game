@@ -14,5 +14,4 @@ function startGame() {
     <p style="direction: rtl;">ثم... صرخة اخترقت سكون المساء.</p>
     <p style="direction: rtl;"><strong>"الجد... لا يتنفس!"</strong></p>
     <button onclick="nextScene()">استمر</button>
-  `;
 }
