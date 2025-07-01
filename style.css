@@ -1,4 +1,4 @@
-/* قاعدة الصفحة */
+/* تنسيق عام للصفحة */
 body {
   margin: 0;
   font-family: sans-serif;
@@ -10,7 +10,7 @@ body {
   align-items: center;
 }
 
-/* الصندوق المركزي */
+/* صندوق المحتوى المركزي */
 .container {
   background: #2e2e2e;
   padding: 20px;
@@ -20,7 +20,7 @@ body {
   width: 100%;
 }
 
-/* عناصر تحكم اللوبي */
+/* عناصر واجهة اللوبي */
 .lobby-controls {
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ body {
   margin-top: 20px;
 }
 
-/* صندوق الانضمام */
+/* حقل الانضمام */
 .join-box {
   display: flex;
   gap: 10px;
@@ -42,7 +42,7 @@ body {
   border: none;
 }
 
-/* أزرار متناسقة */
+/* أزرار عامة */
 button {
   padding: 10px 15px;
   border: none;
