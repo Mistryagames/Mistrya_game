@@ -1,5 +1,5 @@
 function startGame() {
-  document.querySelector(".container").innerHTML = `
+  document.querySelector(".container").innerHTML = 
     <h2 style="direction: rtl;">فيلا بالديني - البداية</h2>
     <p style="direction: rtl;"><em>توسكانا، إيطاليا – خريف 2023</em></p>
     <p style="direction: rtl;">في قلب الريف الإيطالي، تقف فيلا بالديني شامخة بين كروم العنب القرمزية.</p>
