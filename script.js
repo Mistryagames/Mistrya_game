@@ -17,4 +17,6 @@ function startGame() {
   `;
 }
 
-
+function nextScene() {
+  // هنا هنضيف المشهد الجاي
+}
