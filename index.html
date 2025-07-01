@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mistrya Interactive</title>
 
-  <!-- Firebase SDK -->
+  <!-- Firebase App (the core Firebase SDK) -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <!-- Firebase Realtime Database -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
+
+  <!-- Firebase Initialization -->
   <script>
-    // إعداد اتصال Firebase
     const firebaseConfig = {
-      apiKey: "AIzaSyCjFwyAbGqlAz7OLMtaAm-O0uTqa58xtqg",
+      apiKey: "AIzaSyCjFwyAbGqlAz7OLMtaAm-OOuTqa58xtqg",
       authDomain: "mistrya-games.firebaseapp.com",
       databaseURL: "https://mistrya-games-default-rtdb.firebaseio.com",
       projectId: "mistrya-games",
@@ -22,7 +25,7 @@
     firebase.initializeApp(firebaseConfig);
   </script>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <div class="container">
@@ -31,7 +34,7 @@
     <div class="lobby-controls">
       <button onclick="createSession()">إنشاء جلسة جديدة</button>
       <div class="join-box">
-        <input id="sessionCode" type="text" placeholder="أدخل رمز الجلسة" />
+        <input id="sessionCode" type="text" placeholder="أدخل رمز الجلسة"/>
         <button onclick="joinSession()">انضم إلى الجلسة</button>
       </div>
     </div>
