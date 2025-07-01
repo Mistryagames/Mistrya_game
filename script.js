@@ -1,4 +1,4 @@
-// script.js
+console.log('script.js loaded');
 
 // مرجع لقاعدة البيانات
 const db = firebase.database();
