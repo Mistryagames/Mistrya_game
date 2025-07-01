@@ -1,30 +1,57 @@
+/* قاعدة الصفحة */
 body {
-  background-color: #1c1c1c;
+  margin: 0;
+  font-family: sans-serif;
+  background: #1c1c1c;
   color: #fff;
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
-  padding-top: 100px;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
+/* الصندوق المركزي */
 .container {
-  max-width: 600px;
-  margin: auto;
-  background-color: #2e2e2e;
-  padding: 40px;
+  background: #2e2e2e;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
+/* عناصر تحكم اللوبي */
+.lobby-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* صندوق الانضمام */
+.join-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.join-box input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+/* أزرار متناسقة */
 button {
-  background-color: #d32f2f;
-  color: white;
-  padding: 15px 30px;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
+  background: #d32f2f;
+  color: #fff;
   cursor: pointer;
-  font-size: 18px;
 }
 
 button:hover {
-  background-color: #b71c1c;
+  background: #b71c1c;
 }
