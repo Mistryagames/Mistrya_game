@@ -1,14 +1,14 @@
-console.log('script.js loaded');
+console.log('✅ script.js loaded');
 
 // مرجع لقاعدة البيانات
 const db = firebase.database();
 
-// دالة لإنشاء رمز جلسة عشوائي (4 أحرف/أرقام)
+// دالة توليد رمز جلسة عشوائي (4 أحرف/أرقام)
 function makeSessionId() {
   return Math.random().toString(36).substr(2, 4).toUpperCase();
 }
 
-// إنشاء جلسة جديدة وكتابة الرمز في Realtime Database
+// إنشاء جلسة جديدة
 function createSession() {
   const sessionId = makeSessionId();
   db.ref('sessions/' + sessionId).set({ createdAt: Date.now() })
@@ -23,13 +23,11 @@ function createSession() {
     });
 }
 
-// الانضمام إلى جلسة موجودة عبر الكود المدخل
+// الانضمام إلى جلسة موجودة
 function joinSession() {
   const input = document.getElementById('sessionCode');
   const code = input.value.trim().toUpperCase();
-  if (!code) {
-    return alert('الرجاء إدخال رمز الجلسة');
-  }
+  if (!code) return alert('الرجاء إدخال رمز الجلسة');
 
   db.ref('sessions/' + code).get()
     .then(snapshot => {
