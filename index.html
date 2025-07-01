@@ -1,19 +1,42 @@
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mistrya Interactive</title>
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCjFwyAbGqlAz7OLMtaAm-OOuTqa58xtqg",
-    authDomain: "mistrya-games.firebaseapp.com",
-    projectId: "mistrya-games",
-    storageBucket: "mistrya-games.firebasestorage.app",
-    messagingSenderId: "345442474515",
-    appId: "1:345442474515:web:3e7e9240aecc229693bde6"
-  };
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js"></script>
+  <script>
+    // إعداد اتصال Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCjFwyAbGqlAz7OLMtaAm-O0uTqa58xtqg",
+      authDomain: "mistrya-games.firebaseapp.com",
+      databaseURL: "https://mistrya-games-default-rtdb.firebaseio.com",
+      projectId: "mistrya-games",
+      storageBucket: "mistrya-games.appspot.com",
+      messagingSenderId: "345442474515",
+      appId: "1:345442474515:web:3e7e9240aecc229693bde6"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>مرحبًا في Mistrya Interactive</h1>
+    <p>ابدئي الآن:</p>
+    <div class="lobby-controls">
+      <button onclick="createSession()">إنشاء جلسة جديدة</button>
+      <div class="join-box">
+        <input id="sessionCode" type="text" placeholder="أدخل رمز الجلسة" />
+        <button onclick="joinSession()">انضم إلى الجلسة</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
