@@ -18,5 +18,73 @@ function startGame() {
 }
 
 function nextScene() {
-  // هنا هنضيف المشهد الجاي
+  document.querySelector(".container").innerHTML = `
+    <h2 style="direction: rtl;">الفصل 1: التحقيق يبدأ</h2>
+    <p style="direction: rtl;">
+      وصلتِ إلى غرفة النبيذ القديمة حيثُ وجد الجدّ <strong>فيتوريو</strong> ملقى على الأرض،
+      وكل من العائلة واقف حوله بوجوه متباينة بين الصدمة والخوف.
+    </p>
+    <p style="direction: rtl;">
+      من تريدين أن تحققي معه أولاً؟
+    </p>
+    <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: auto; direction: rtl;">
+      <button onclick="interrogate('Marco')">ماركو (الابن)</button>
+      <button onclick="interrogate('Elisa')">إليسا (الزوجة)</button>
+      <button onclick="interrogate('Beatrice')">بياتريس (الابنة)</button>
+      <button onclick="interrogate('Grazia')">جرازيا (العمة)</button>
+      <button onclick="interrogate('Riccardo')">ريكاردو (الخاطب)</button>
+    </div>
+  `;
+}
+
+function interrogate(who) {
+  let text = '';
+  if (who === 'Marco') {
+    text = `
+      <h2 style="direction: rtl;">تحقيق مع ماركو</h2>
+      <p style="direction: rtl;">
+        ماركو يبدو مرتبكاً. قال إنه كان يراجع قائمة الضيوف عندما سمع الصرخة.
+        لكنه لم يرَ أحداً يدخل أو يخرج من غرفة النبيذ.
+      </p>
+      <button onclick="nextScene()">عودة للتحقيق</button>
+    `;
+  }
+  else if (who === 'Elisa') {
+    text = `
+      <h2 style="direction: rtl;">تحقيق مع إليسا</h2>
+      <p style="direction: rtl;">
+        إليسا تُمسك بكوب نبيذ بيد متعبة. أخبرتني أنها كانت تفحص أنواع النبيذ في القاعة الكبرى
+        ولم تسمع خطوات قبل الصرخة.
+      </p>
+      <button onclick="nextScene()">عودة للتحقيق</button>
+    `;
+  }
+  else if (who === 'Beatrice') {
+    text = `
+      <h2 style="direction: rtl;">تحقيق مع بياتريس</h2>
+      <p style="direction: rtl;">
+        بياتريس نظرت إلي وخاطبتني بصوت مرتعش: "لم أكن في الداخل، كنت أرسم في جناحي..."
+      </p>
+      <button onclick="nextScene()">عودة للتحقيق</button>
+    `;
+  }
+  else if (who === 'Grazia') {
+    text = `
+      <h2 style="direction: rtl;">تحقيق مع جرازيا</h2>
+      <p style="direction: rtl;">
+        جرازيا عبّرت عن قلقها: "الطاقة هنا مظلمة. رأيت علامة في التاروت تشير إلى نهاية..."
+      </p>
+      <button onclick="nextScene()">عودة للتحقيق</button>
+    `;
+  }
+  else if (who === 'Riccardo') {
+    text = `
+      <h2 style="direction: rtl;">تحقيق مع ريكاردو</h2>
+      <p style="direction: rtl;">
+        ريكاردو نظر إليّ ببرود: "خرجت لأتنفس قليلاً قبل الاحتفال… وجدت الكوب مكسورًا عند الباب."
+      </p>
+      <button onclick="nextScene()">عودة للتحقيق</button>
+    `;
+  }
+  document.querySelector(".container").innerHTML = text;
 }
